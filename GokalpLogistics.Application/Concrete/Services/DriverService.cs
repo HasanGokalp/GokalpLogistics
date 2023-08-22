@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GokalpLogistics.Application.Abstract.Services;
+using GokalpLogistics.Application.Concrete.Attributes;
 using GokalpLogistics.Application.Concrete.Models.Dto;
 using GokalpLogistics.Application.Concrete.Models.RequestModels.Drivers;
+using GokalpLogistics.Application.Concrete.Validators.Drivers;
 using GokalpLogistics.Application.Concrete.Wrapper;
 using GokalpLogistics.Domain.Concrete;
 using GokalpLogistics.Persistence.Abstract.UnitWork;
-using System.Security.Principal;
 
 namespace GokalpLogistics.Application.Concrete.Services
 {
@@ -24,7 +25,8 @@ namespace GokalpLogistics.Application.Concrete.Services
             Db = db;
             Mapper = mapper;
         }
-
+        [Performance]
+        [Validate(typeof(DriverRegisterValidation))]
         public async Task<Result<int>> CreateDriver(DriverRegisterVM driverRegisterVM)
         {
             var result = new Result<int>();
@@ -84,6 +86,8 @@ namespace GokalpLogistics.Application.Concrete.Services
             return result;
         }
 
+        [Performance]
+        [Validate(typeof(DriverRegisterValidation))]
         public async Task<Result<bool>> LoginDriver(DriverRegisterVM driverRegisterVM)
         {
             var list = new Result<bool>();
@@ -97,6 +101,8 @@ namespace GokalpLogistics.Application.Concrete.Services
             return list;
         }
 
+        [Performance]
+        [Validate(typeof(DriverUpdateValidation))]
         public async Task<Result<bool>> UpdateDriver(DriverUpdateVM driverUpdateVM)
         {
             var result = new Result<bool>();

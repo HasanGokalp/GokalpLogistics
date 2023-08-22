@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GokalpLogistics.Application.Abstract.Services;
+using GokalpLogistics.Application.Concrete.Attributes;
 using GokalpLogistics.Application.Concrete.Models.Dto;
 using GokalpLogistics.Application.Concrete.Models.RequestModels.Trucks;
-using GokalpLogistics.Application.Concrete.Models.RequestModels.Trucks;
+using GokalpLogistics.Application.Concrete.Validators.Trucks;
 using GokalpLogistics.Application.Concrete.Wrapper;
 using GokalpLogistics.Domain.Concrete;
 using GokalpLogistics.Persistence.Abstract.UnitWork;
@@ -20,6 +21,8 @@ namespace GokalpLogistics.Application.Concrete.Services
             Db = db;
             Mapper = mapper;
         }
+        [Performance]
+        [Validate(typeof(TruckRegisterValidation))]
         public async Task<Result<int>> CreateTruck(TruckRegisterVM TruckRegisterVM)
         {
             var result = new Result<int>();
@@ -79,6 +82,8 @@ namespace GokalpLogistics.Application.Concrete.Services
             return result;
         }
 
+        [Performance]
+        [Validate(typeof(TruckUpdateValidation))]
         public async Task<Result<bool>> UpdateTruck(TruckUpdateVM TruckUpdateVM)
         {
             var result = new Result<bool>();
