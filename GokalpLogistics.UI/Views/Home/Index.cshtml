@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ansayfa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Home/index.css">
+</head>
+<body>
+    <div id="loading">
+        <div id="spinner"></div>
+    </div>
+    <div id="header" class="animated slideInDown" style="animation-delay:1.8s;">
+        <div id="title">Gökalp Logistic</div><br>
+        <div id="links">
+            <a href="#skills">Yeteneklerimiz</a>
+            <a href="#work" style="margin:0px 60px;">Varlıklarımız</a>
+            <a href="#contact">İletişim</a>
+            <a href="https://localhost:7240/Admin/Home/Index">Tır takip sistemi</a>
+        </div>
+    </div>
+
+    <center>
+        <div id="middle">
+            <div id="tagline" class="animated zoomIn" style="animation-delay:1.8s;">
+                Hazırsanız başlayalım<br>
+                <button class="btn_one"><a href="#contact">İletişim</a></button>
+            </div>
+        </div>
+    </center>
+
+    <div id="portfolio">
+        <div id="skills">
+            <h1>Yeteneklerimiz</h1>
+            <div>
+                <p>
+                    Uluslararası taşımacılık, Ülke içi taşımacılık, Tır kiralama, Tır satış
+                </p>
+            </div>
+        </div>
+
+        <div id="work">
+            <h1>Varlıklarımız</h1>
+            <div class="project">
+                <h2>Araçlarımız</h2>
+                <div>
+                    Scania, Volvo, Mercedes-Benz, MAN
+                </div>
+                <button class="btn_one">Tırlarımızı yakından görebilirsiniz</button>
+            </div>
+        </div>
+
+        <div id="contact">
+            <h1>İletişim</h1>
+            <form>
+                <input type="text" placeholder="İsim ve soyisim bilgilerinizi giriniz" required>
+                <input type="email" placeholder="E-mail bilgilerinizi giriniz " required><br>
+                <textarea placeholder="Bize iletmek istediğiniz mesajısınızı bu bölüme yazınız" required rows="5"></textarea><br>
+                <button class="btn_one">Gönder</button>
+            </form>
+            <div id="details">
+                <a class="btn_social"><i class="fas fa-phone"></i></a>
+                <a class="btn_social"><i class="fas fa-at"></i></a>
+                <a class="btn_social"><i class="fab fa-twitter"></i></a>
+                <a class="btn_social"><i class="fab fa-dribbble"></i></a>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        made in Turkey <br><br> <a href="https://github.com/HasanGokalp">Gökalp Logistic iyi günler diler</a>
+    </div>
+    <script src="~/Home/index.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿@model GokalpLogistics.UI.Models.RequestModels.Drivers.DriverRegisterVM
+@inject IHttpContextAccessor _contextAccessor
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sürücü ve Yönetici girişi</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <link rel="stylesheet" href="~/loginFromDesign/style.css">
+
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="login-form">
+        <form action="/admin/login/index@_contextAccessor.HttpContext.Request.QueryString.Value" method="post">
+            <h1>Sürücü ve Yönetici girişi</h1>
+            <div class="content">
+                <div class="input-field">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Name" type="email" placeholder="Kullanıcı Adı" autocomplete="nope">
+                </div>
+                <div class="input-field">
+                    <input asp-for="Surname" type="password" placeholder="Şifre" autocomplete="new-password">
+                </div>
+                <a href="#" class="link">Şifreni mi unuttun</a>
+            </div>
+            <div class="action">
+                <button>yöneticiye ulaş</button>
+                <button>Giriş yap</button>
+            </div>
+        </form>
+    </div>
+    <!-- partial -->
+    <script src="~/loginFromDesign/script.js"></script>
+
+</body>
