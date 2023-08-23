@@ -1,5 +1,5 @@
 ## GokalpLogistics
-Gereksinimler :
+Kullanmadan önce :
 package-manager-console u açıp Update-Database diyip ya da yeni migration oluşrutup yeniden Update-Database
 
 # Projenin Senaryosu
