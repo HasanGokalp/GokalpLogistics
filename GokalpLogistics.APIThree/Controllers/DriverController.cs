@@ -21,9 +21,9 @@ namespace GokalpLogistics.API.Controllers
 
         [HttpGet("LoginDriver")]
         [AllowAnonymous]
-        public async Task<ActionResult<Result<List<bool>>>> LoginDriver(DriverLoginVM driverLoginVM)
+        public async Task<ActionResult<Result<List<bool>>>> LoginDriver(DriverRegisterVM driverRegisterVM)
         {
-            var drivers = await _service.LoginDriver(driverLoginVM);
+            var drivers = await _service.LoginDriver(driverRegisterVM);
             return Ok(drivers);
         }
 

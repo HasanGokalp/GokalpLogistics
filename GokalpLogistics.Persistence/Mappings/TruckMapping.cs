@@ -4,32 +4,36 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GokalpLogistics.Persistence.Mappings
 {
-    public class TruckMapping : IEntityTypeConfiguration<Truck>
+    public class TruckMapping : BaseMapping<Truck>
     {
-        public void Configure(EntityTypeBuilder<Truck> builder)
+        public override void Configure(EntityTypeBuilder<Truck> builder)
         {
-            builder.ToTable("TRUCKS");
+            base.Configure(builder);
+            builder.ToTable("TRUCK");
 
-            builder.HasKey(t => t.Id);
+            builder.Property(x => x.TruckName)
+                .HasColumnName("TRUCKNAME")
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
 
-            builder.Property(t => t.Id)
-                .IsRequired()
-                .HasColumnName("ID");
+            builder.Property(x => x.TruckModel)
+                .HasColumnName("TRUCKMODEL")
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
 
-            builder.Property(t => t.IsDeleted)
-                .IsRequired()
-                .HasDefaultValueSql("0")
-                .HasColumnName("IS_DELETED");
+            builder.Property(x => x.Lat)
+                .HasColumnName("LAT")
+                .HasColumnType("integer")
+                .IsRequired();
 
-            builder.Property(t => t.Name)
-                .IsRequired()
-                .HasColumnName("NAME")
-                .HasColumnType("nvarchar(15)");
+            builder.Property(x => x.Lng)
+                .HasColumnName("LNG")
+                .HasColumnType("integer")
+                .IsRequired();
 
-            builder.Property(t => t.Model)
-                .IsRequired()
-                .HasColumnName("MODEL")
-                .HasColumnType("nvarchar(15)");
+            builder.HasOne(x => x.Driver)
+               .WithOne(x => x.Truck)
+               .HasForeignKey<Truck>(x => x.DriverId);
         }
     }
 }

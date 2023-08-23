@@ -12,6 +12,6 @@ namespace GokalpLogistics.Application.Abstract.Services
         Task<Result<int>> CreateDriver(DriverRegisterVM driverRegisterVM);
         Task<Result<bool>> UpdateDriver(DriverUpdateVM driverUpdateVM);
         Task<Result<bool>> DeleteDriver(int id);
-        Task<Result<bool>> LoginDriver(DriverRegisterVM driverRegisterVM);
+        Task<Result<bool>> LoginDriver(DriverLoginVM driverLoginVM);
     }
 }

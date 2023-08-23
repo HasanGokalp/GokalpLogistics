@@ -45,7 +45,7 @@ namespace GokalpLogistics.API.Controllers
         [HttpPut("update/{id:int}")]
         public async Task<ActionResult<Result<int>>> UpdateTruck(int id, TruckUpdateVM truckUpdateVM)
         {
-            if (id != truckUpdateVM.Driver.Id)
+            if (id != truckUpdateVM.Id)
             {
                 return BadRequest();
             }

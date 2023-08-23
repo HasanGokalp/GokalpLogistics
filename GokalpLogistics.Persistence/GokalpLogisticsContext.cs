@@ -2,6 +2,7 @@
 using GokalpLogistics.Domain.Concrete;
 using GokalpLogistics.Persistence.Mappings;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace GokalpLogistics.Persistence
 {
@@ -39,25 +40,34 @@ namespace GokalpLogistics.Persistence
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=GLOGISTICSDB;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=GLOGISTICSDB8;Trusted_Connection=True;TrustServerCertificate=True");
         }
         #endregion
 
         #region ModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.ApplyConfiguration(new DriverMapping());
             modelBuilder.ApplyConfiguration(new TruckMapping());
 
             //Aşağıdaki entity türleri için isDeleted bilgisi false olanların otomatik olarak filtrelenmesi sağlanır.
-            modelBuilder.Entity<Truck>().HasQueryFilter(x => x.IsDeleted == null);
-            modelBuilder.Entity<Driver>().HasQueryFilter(x => x.IsDeleted == null);
+            //modelBuilder.Entity<Truck>().HasQueryFilter(x => x.IsDeleted == null);
+            //modelBuilder.Entity<Driver>().HasQueryFilter(x => x.IsDeleted == null);
 
-            modelBuilder.Entity<Driver>()
-                    .HasOne(d => d.Truck)
-                    .WithOne(t => t.Driver)
-                    .HasForeignKey<Truck>(t => t.Id);
+            //modelBuilder.Entity<Driver>()
+            //        .HasOne(d => d.Truck)
+            //        .WithOne(t => t.Driver)
+            //        .HasForeignKey<Truck>(t => t.driverId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Truck>()
+            //        .HasOne(t => t.Driver)
+            //        .WithOne(t => t.Truck)
+            //        .HasForeignKey<Truck>(t => t.driverId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Driver>().HasOne(d => d.Truck).WithOne(t => t.Driver).HasForeignKey<Truck>(t => t.DriverId);
         }
         #endregion
 

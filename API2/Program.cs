@@ -1,5 +1,4 @@
 using FluentValidation;
-using GokalpLogistics.API.Filters;
 using GokalpLogistics.Application.Abstract.Services;
 using GokalpLogistics.Application.Concrete.AutoMapper;
 using GokalpLogistics.Application.Concrete.Services;
@@ -16,12 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-//builder.Services.AddControllers();
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Db baðlantýsý.
+//Db baðlantýsý
 #region DataBase
 
 builder.Services.AddDbContext<GokalpLogisticsContext>(s =>
@@ -32,15 +31,7 @@ builder.Services.AddDbContext<GokalpLogisticsContext>(s =>
 
 #endregion
 
-//ActionFilterýmýzý pipeline a ekliyoruz ki hata yönetimini özelleþtirelim.
-#region Filters
-builder.Services.AddControllers(opt =>
-{
-    opt.Filters.Add(new ExceptionHandlerFilter());
-});
-#endregion
-
-//Depency injection.
+//Depency injection
 #region DI
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -50,7 +41,7 @@ builder.Services.AddScoped<IDriverService, DriverService>();
 
 #endregion
 
-//Model doðrulama.
+//Model doðrulama
 #region FluentValidation
 
 builder.Services.AddValidatorsFromAssemblyContaining(typeof(DriverRegisterValidation));
@@ -61,7 +52,7 @@ builder.Services.AddValidatorsFromAssemblyContaining(typeof(TruckUpdateValidatio
 
 #endregion
 
-//Map.
+//Map
 #region AutoMapper
 
 builder.Services.AddAutoMapper(typeof(DriverMapper), typeof(TruckMapper));

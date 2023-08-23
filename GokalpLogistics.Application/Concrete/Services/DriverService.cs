@@ -31,10 +31,10 @@ namespace GokalpLogistics.Application.Concrete.Services
         {
             var result = new Result<int>();
 
-            var driverNameExists = await Db.GetRepository<Driver>().AnyAsync(x => x.Name == driverRegisterVM.Name.ToUpper().Trim());
+            var driverNameExists = await Db.GetRepository<Driver>().AnyAsync(x => x.Name == driverRegisterVM.DriverName.ToUpper().Trim());
             if (driverNameExists)
             {
-                throw new Exception($"{driverRegisterVM.Name} isminde bir sürücü eklenmiştir.");
+                throw new Exception($"{driverRegisterVM.DriverName} isminde bir sürücü eklenmiştir.");
             }
 
             var driverEntity = Mapper.Map<Driver>(driverRegisterVM);
@@ -87,15 +87,15 @@ namespace GokalpLogistics.Application.Concrete.Services
         }
 
         [Performance]
-        [Validate(typeof(DriverRegisterValidation))]
-        public async Task<Result<bool>> LoginDriver(DriverRegisterVM driverRegisterVM)
+        [Validate(typeof(DriverLoginValidator))]
+        public async Task<Result<bool>> LoginDriver(DriverLoginVM driverLoginVM)
         {
             var list = new Result<bool>();
-            var existsAccount = await Db.GetRepository<Driver>().GetSingleByFilterAsync(x => x.Name == driverRegisterVM.Name);
+            var existsAccount = await Db.GetRepository<Driver>().GetSingleByFilterAsync(x => x.Username == driverLoginVM.Username);
             //Kullanıcı yoksa hata fırlat.
             if (existsAccount is null)
             {
-                throw new Exception($"{driverRegisterVM.Name} kullanıcı adına sahip kullanıcı bulunamadı ye da parola hatalıdır.");
+                throw new Exception($"{driverLoginVM.Username} kullanıcı adına sahip kullanıcı bulunamadı ye da parola hatalıdır.");
             }
             list.Data = true;
             return list;

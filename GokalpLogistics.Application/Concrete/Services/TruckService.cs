@@ -27,10 +27,10 @@ namespace GokalpLogistics.Application.Concrete.Services
         {
             var result = new Result<int>();
 
-            var TruckNameExists = await Db.GetRepository<Truck>().AnyAsync(x => x.Name == TruckRegisterVM.Name.ToUpper().Trim());
+            var TruckNameExists = await Db.GetRepository<Truck>().AnyAsync(x => x.TruckName == TruckRegisterVM.TruckName.ToUpper().Trim());
             if (TruckNameExists)
             {
-                throw new Exception($"{TruckRegisterVM.Name} isminde bir sürücü eklenmiştir.");
+                throw new Exception($"{TruckRegisterVM.TruckName} isminde bir tır daha önce eklenmiştir.");
             }
 
             var TruckEntity = Mapper.Map<Truck>(TruckRegisterVM);
@@ -49,7 +49,7 @@ namespace GokalpLogistics.Application.Concrete.Services
             var TruckById = await Db.GetRepository<Truck>().GetById(id);
             if (TruckById is null)
             {
-                throw new Exception($"{id} numaralı sürücü bulunamadı.");
+                throw new Exception($"{id} numaralı bir tır bulunamadı.");
             }
 
             Db.GetRepository<Truck>().Delete(TruckById);
@@ -88,13 +88,13 @@ namespace GokalpLogistics.Application.Concrete.Services
         {
             var result = new Result<bool>();
 
-            var TruckIdExists = await Db.GetRepository<Truck>().AnyAsync(x => x.Id == TruckUpdateVM.Id);
+            var TruckIdExists = await Db.GetRepository<Truck>().AnyAsync(x => x.Id == TruckUpdateVM.Driver.Id);
             if (!TruckIdExists)
             {
-                throw new Exception($"{TruckUpdateVM.Id} numaralı şehir bulunamadı.");
+                throw new Exception($"{TruckUpdateVM.Driver.Id} numaralı bir tır bulunamadı bulunamadı.");
             }
 
-            var existsTruckEntity = await Db.GetRepository<Truck>().GetById(TruckUpdateVM.Id);
+            var existsTruckEntity = await Db.GetRepository<Truck>().GetById(TruckUpdateVM.Driver.Id);
 
             Mapper.Map(TruckUpdateVM, existsTruckEntity);
 

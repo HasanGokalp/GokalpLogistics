@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{3651
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{0106D433-7E0A-4424-800A-2650C5CBA7EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.Domain", "GokalpLogistics.Domain\GokalpLogistics.Domain.csproj", "{DC2D8E3F-28E1-4044-B9A5-D5CE42F8CF00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.Domain", "GokalpLogistics.Domain\GokalpLogistics.Domain.csproj", "{DC2D8E3F-28E1-4044-B9A5-D5CE42F8CF00}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{61807166-17F4-475D-BBA8-4B158732D17F}"
 EndProject
@@ -17,15 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{2DC054CB-E470-44C8-8015-8AED308D5220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.Application", "GokalpLogistics.Application\GokalpLogistics.Application.csproj", "{9921C6B9-D137-42C7-955E-4CCF5125E71E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.Application", "GokalpLogistics.Application\GokalpLogistics.Application.csproj", "{9921C6B9-D137-42C7-955E-4CCF5125E71E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.Infrastructure", "GokalpLogistics.Infrastructure\GokalpLogistics.Infrastructure.csproj", "{3CDD5D5D-C28D-4A12-AD79-84386DE1C18D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.Infrastructure", "GokalpLogistics.Infrastructure\GokalpLogistics.Infrastructure.csproj", "{3CDD5D5D-C28D-4A12-AD79-84386DE1C18D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.Persistence", "GokalpLogistics.Persistence\GokalpLogistics.Persistence.csproj", "{C01E7B87-1A24-49EB-A03B-78F575584B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.Persistence", "GokalpLogistics.Persistence\GokalpLogistics.Persistence.csproj", "{C01E7B87-1A24-49EB-A03B-78F575584B0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.API", "GokalpLogistics.API\GokalpLogistics.API.csproj", "{F11560A0-16B2-43BF-B22B-97A65D5A1AB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.API", "GokalpLogistics.API\GokalpLogistics.API.csproj", "{F11560A0-16B2-43BF-B22B-97A65D5A1AB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GokalpLogistics.UI", "GokalpLogistics.UI\GokalpLogistics.UI.csproj", "{4D5C2B78-9257-4D94-BE87-32D6D7F75886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GokalpLogistics.UI", "GokalpLogistics.UI\GokalpLogistics.UI.csproj", "{4D5C2B78-9257-4D94-BE87-32D6D7F75886}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,37 +4,41 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GokalpLogistics.Persistence.Mappings
 {
-    public class DriverMapping : IEntityTypeConfiguration<Driver>
+    public class DriverMapping : BaseMapping<Driver>
     {
-        public void Configure(EntityTypeBuilder<Driver> builder)
+        public override void Configure(EntityTypeBuilder<Driver> builder)
         {
+            base.Configure(builder);
+
             builder.ToTable("DRIVER");
 
-            builder.HasKey(t => t.Id);
-
-            builder.Property(t => t.Id)
-                .IsRequired()
-                .HasColumnName("ID");
-
-            builder.Property(t => t.IsDeleted)
-                .IsRequired()
-                .HasDefaultValueSql("0")
-                .HasColumnName("IS_DELETED");
-
-            builder.Property(t => t.Name)
-                .IsRequired()
+            builder.Property(x => x.Name)
                 .HasColumnName("NAME")
-                .HasColumnType("nvarchar(15)");
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
 
-            builder.Property(t => t.Surname)
-                .IsRequired()
-                .HasColumnName("MODEL")
-                .HasColumnType("nvarchar(15)");
+            builder.Property(x => x.Surname)
+                .HasColumnName("SURNAME")
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
 
-            //builder.Property(x => x.Truck)
-            //        .HasOne(d => d.Truck)
-            //        .WithOne(t => t.Driver)
-            //        .HasForeignKey<Truck>(t => t.Id);
+            builder.Property(x => x.Username)
+                .HasColumnName("USERNAME")
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
+
+            builder.Property(x => x.Password)
+                .HasColumnName("PASSWORD")
+                .HasColumnType("nvarchar(15)")
+                .IsRequired();
+
+            builder.Property(x => x.TruckId)
+                .HasColumnName("TRUCK_ID")
+                .IsRequired();
+
+            builder.HasOne(x => x.Truck)
+                .WithOne(x => x.Driver)
+                .HasForeignKey<Driver>(x => x.TruckId);
         }
     }
 }

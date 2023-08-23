@@ -12,6 +12,9 @@ namespace GokalpLogistics.Domain.Concrete
     /// </summary>
     public class Driver : BaseEntity
     {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public int TruckId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public Truck Truck { get; set; }

@@ -8,8 +8,8 @@ namespace GokalpLogistics.Application.Concrete.Models.RequestModels.Trucks
     /// </summary>
     public class TruckRegisterVM
     {
-        public string Name { get; set; }
-        public string Model { get; set; }
+        public string TruckName { get; set; }
+        public string TruckModel { get; set; }
         public Driver Driver { get; set; }
         public int Lat { get; set; }
         public int Lng { get; set; }
