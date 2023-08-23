@@ -12,7 +12,7 @@ namespace GokalpLogistics.Persistence.Concrete.UnitWork
     {
         //Fields
         private bool disposedValue;
-        private readonly GokalpLogisticsContext context;
+        private readonly GokalpLogisticsContext _context;
         private readonly Dictionary<Type, object> repos;
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace GokalpLogistics.Persistence.Concrete.UnitWork
         public UnitWork(GokalpLogisticsContext context)
         {
             repos = new Dictionary<Type, object>();
-            context = context;
+            _context = context;
         }
 
         /// <summary>
@@ -34,11 +34,11 @@ namespace GokalpLogistics.Persistence.Concrete.UnitWork
         {
             var result = false;
 
-            using (var transaction = context.Database.BeginTransaction())
+            using (var transaction = _context.Database.BeginTransaction())
             {
                 try
                 {
-                    await context.SaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     await transaction.CommitAsync();
                     result = true;
                 }
@@ -66,7 +66,7 @@ namespace GokalpLogistics.Persistence.Concrete.UnitWork
                 return (IRepository<T>)repos[typeof(IRepository<T>)];
             }
 
-            var repository = new Repository<T>(context);
+            var repository = new Repository<T>(_context);
             repos.Add(typeof(IRepository<T>), repository);
             return repository;
         }
