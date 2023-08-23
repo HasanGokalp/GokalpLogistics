@@ -1,4 +1,5 @@
-﻿using GokalpLogistics.UI.Models.RequestModels.Drivers;
+﻿using GokalpLogistics.UI.Models.Dtos;
+using GokalpLogistics.UI.Models.RequestModels.Drivers;
 using GokalpLogistics.UI.Service.Absract;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -26,27 +27,23 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(DriverLoginVM driverModel, [FromQuery] string ReturnUrl)
+        public async Task<IActionResult> Index(DriverLoginVM driverModel)
         {
             if (!ModelState.IsValid)
             {
                 return View(driverModel);
+                
             }
             
             var response = await _restService.PostAsync<DriverLoginVM, Result<bool>>(driverModel, "driver/LoginDriver");
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 ModelState.AddModelError("", response.Data.Errors[0]);
+                
             }
             else
             {
-            
-                var deneme = JsonConvert.SerializeObject(response.Data.Data);
-                if (ReturnUrl != null)
-                {
-                    return Redirect(ReturnUrl);
-                    //return RedirectToAction("Index", "Map"/*, new { Area = "Admin" }*/);
-                }
+                                
                 return RedirectToAction("Index", "Home", new { Area = "Admin" });
             }
             return View(driverModel);
