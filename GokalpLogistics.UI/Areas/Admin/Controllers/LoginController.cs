@@ -26,25 +26,26 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(DriverRegisterVM driverModel, [FromQuery] string ReturnUrl)
+        public async Task<IActionResult> Index(DriverLoginVM driverModel, [FromQuery] string ReturnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return View(driverModel);
             }
             
-            var response = await _restService.PostAsync<DriverRegisterVM, Result<bool>>(driverModel, "driver/LoginDriver");
+            var response = await _restService.PostAsync<DriverLoginVM, Result<bool>>(driverModel, "driver/LoginDriver");
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 ModelState.AddModelError("", response.Data.Errors[0]);
             }
             else
             {
-                var sessionKey = _configuration["Application:SessionKey"];
-                _contextAccessor.HttpContext.Session.SetString(sessionKey, JsonConvert.SerializeObject(response.Data.Data));
+            
+                var deneme = JsonConvert.SerializeObject(response.Data.Data);
                 if (ReturnUrl != null)
                 {
                     return Redirect(ReturnUrl);
+                    //return RedirectToAction("Index", "Map"/*, new { Area = "Admin" }*/);
                 }
                 return RedirectToAction("Index", "Home", new { Area = "Admin" });
             }

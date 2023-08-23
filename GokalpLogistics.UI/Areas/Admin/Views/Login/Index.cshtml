@@ -1,5 +1,9 @@
 ﻿@model GokalpLogistics.UI.Models.RequestModels.Drivers.DriverLoginVM
 
+@{
+    Layout = null;
+}
+
 <head>
     <meta charset="UTF-8">
     <title>Sürücü ve Yönetici girişi</title>
@@ -15,10 +19,10 @@
             <div class="content">
                 <div class="input-field">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input asp-for="Name" type="text" placeholder="Kullanıcı Adı" autocomplete="nope">
+                    <input asp-for="Username" type="text" placeholder="Kullanıcı Adı" autocomplete="nope">
                 </div>
                 <div class="input-field">
-                    <input asp-for="Surname" type="password" placeholder="Şifre" autocomplete="new-password">
+                    <input asp-for="Password" type="password" placeholder="Şifre" autocomplete="new-password">
                 </div>
                 <a href="#" class="link">Şifreni mi unuttun</a>
             </div>
