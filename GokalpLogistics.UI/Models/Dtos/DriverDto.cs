@@ -4,8 +4,9 @@ namespace GokalpLogistics.UI.Models.Dtos
 {
     public class DriverDto
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public Truck? Truck { get; set; }
+        public int TruckId { get; set; }
+        public string DriverName { get; set; }
+        public string DriverSurname { get; set; }
+        public Truck Truck { get; set; }
     }
 }

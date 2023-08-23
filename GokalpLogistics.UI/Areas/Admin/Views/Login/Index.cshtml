@@ -1,5 +1,4 @@
-﻿@model GokalpLogistics.UI.Models.RequestModels.Drivers.DriverRegisterVM
-@inject IHttpContextAccessor _contextAccessor
+﻿@model GokalpLogistics.UI.Models.RequestModels.Drivers.DriverLoginVM
 
 <head>
     <meta charset="UTF-8">
@@ -11,12 +10,12 @@
 <body>
     <!-- partial:index.partial.html -->
     <div class="login-form">
-        <form action="/admin/login/index@_contextAccessor.HttpContext.Request.QueryString.Value" method="post">
+        <form asp-action="Index" asp-controller="Login" method="post">
             <h1>Sürücü ve Yönetici girişi</h1>
             <div class="content">
                 <div class="input-field">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input asp-for="Name" type="email" placeholder="Kullanıcı Adı" autocomplete="nope">
+                    <input asp-for="Name" type="text" placeholder="Kullanıcı Adı" autocomplete="nope">
                 </div>
                 <div class="input-field">
                     <input asp-for="Surname" type="password" placeholder="Şifre" autocomplete="new-password">
