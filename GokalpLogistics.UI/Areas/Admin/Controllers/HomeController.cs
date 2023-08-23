@@ -5,6 +5,7 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
     [Area("Admin")]
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index(string? str)
         {
             if (str == null)
@@ -17,6 +18,16 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
                 ViewBag.User = str;
                 ViewBag.Login = "Profil";
             }
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult GetDriverMap()
+        {
+            ViewBag.lat = 34; 
+            ViewBag.lng = 38;
+            
             return View();
         }
     }

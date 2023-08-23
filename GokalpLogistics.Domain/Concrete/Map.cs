@@ -16,5 +16,7 @@
         public int Zoom { get; set; }
         public int Size { get; set; }
        
+        
+
     }
 }

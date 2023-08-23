@@ -43,12 +43,27 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
             }
             else
             {
+                
                 //ViewBag.kullanıcı = driverModel.Username;
-                return RedirectToAction("Index", "Home", new { Area = "Admin", str = driverModel.Username });
+                return RedirectToAction("GetDriverMap", "Home", new { Area = "Admin"});
                 //return RedirectToAction("Index", "Home", new { Area = "Admin", ViewBag.kullanıcı });
+                
 
             }
             return View(driverModel);
         }
+
+        //[HttpGet]
+        //public IActionResult RouteDrive(bool isTrue)
+        //{
+        //    if (isTrue)
+        //    {
+        //        ///RestServisten gelebilir
+                
+        //        return RedirectToAction("GetDriverMap", "Home", new { Area = "Admin"} );
+        //    }
+        //    return View();
+        //}
+
     }
 }
