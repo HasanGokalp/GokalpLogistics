@@ -43,8 +43,10 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
             }
             else
             {
-                                
-                return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                //ViewBag.kullanıcı = driverModel.Username;
+                return RedirectToAction("Index", "Home", new { Area = "Admin", str = driverModel.Username });
+                //return RedirectToAction("Index", "Home", new { Area = "Admin", ViewBag.kullanıcı });
+
             }
             return View(driverModel);
         }
