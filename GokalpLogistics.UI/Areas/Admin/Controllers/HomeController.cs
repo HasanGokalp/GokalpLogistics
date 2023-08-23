@@ -25,8 +25,8 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetDriverMap()
         {
-            ViewBag.lat = 34; 
-            ViewBag.lng = 38;
+            ViewBag.lat = 41; 
+            ViewBag.lng = 26;
             
             return View();
         }
