@@ -67,7 +67,10 @@ namespace GokalpLogistics.UI.Service.Concrete
             RestRequest restRequest = new RestRequest(endpointUrl, Method.Post);
 
             restRequest.AddParameter("application/json", jsonModel, ParameterType.RequestBody);
-            restRequest.AddHeader("Accept", "application/json");
+            //restRequest.AddHeader("Accept", "application/json");
+            restRequest.AddHeader("Content-Type", "application/json");
+            var body = JsonConvert.SerializeObject(requestModel);
+            restRequest.AddBody(body, "application/json");
             var response = await restClient.ExecuteAsync<TResponse>(restRequest);
             return response;
         }

@@ -5,19 +5,27 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
     [Area("Admin")]
     public class HomeController : Controller
     {
+        const string _driverName = "DriverName";
+
         [HttpGet]
         public IActionResult Index(string? str)
         {
-            if (str == null)
+            //if (str == null)
+            //{
+            //    ViewBag.User = "Kullanıcı girili değil";
+            //    ViewBag.Login = "Giriş yapmak için tıklayınız";
+            //}
+            //else
+            //{
+            //    ViewBag.User = str;
+            //    ViewBag.Login = "Profil";
+            //}
+
+            if (HttpContext.Session.GetString("DriverName") == "hasan")
             {
-                ViewBag.User = "Kullanıcı girili değil";
-                ViewBag.Login = "Giriş yapmak için tıklayınız";
+                ViewBag.User = HttpContext.Session.GetString("DriverName");
             }
-            else
-            {
-                ViewBag.User = str;
-                ViewBag.Login = "Profil";
-            }
+
             return View();
         }
 
