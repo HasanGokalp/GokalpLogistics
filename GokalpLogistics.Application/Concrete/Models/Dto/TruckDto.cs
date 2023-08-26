@@ -6,7 +6,7 @@ namespace GokalpLogistics.Application.Concrete.Models.Dto
     {
         public string TruckName { get; set; }
         public string TruckModel { get; set; }
-        public Driver Driver { get; set; }
+        public DriverDto Driver { get; set; }
         public int Lat { get; set; }
         public int Lng { get; set; }
     }

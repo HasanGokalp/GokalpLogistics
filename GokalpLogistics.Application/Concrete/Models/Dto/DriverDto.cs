@@ -9,6 +9,6 @@ namespace GokalpLogistics.Application.Concrete.Models.Dto
         public int TruckId { get; set; }
         public string DriverName { get; set; }
         public string DriverSurname { get; set; }
-        public Truck Truck { get; set; }
+        public TruckDto Truck { get; set; }
     }
 }
