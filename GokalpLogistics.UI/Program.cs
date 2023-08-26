@@ -8,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddControllers()
-            .AddFluentValidation(x => x
-            .RegisterValidatorsFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddFluentValidationAutoValidation()
+   .AddFluentValidationClientsideAdapters();
 
 
 
