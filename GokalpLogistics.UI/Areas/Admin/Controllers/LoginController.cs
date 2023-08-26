@@ -30,38 +30,29 @@ namespace GokalpLogistics.UI.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        [SessionFilter]
-        public async Task<IActionResult> Index(DriverLoginVM driverModel)
+        [HttpPost]        
+        public async Task<IActionResult> Index(DriverLoginVM loginModel)
         {
+            //Model doğrulamasını geçemeyen kullanıcıyı buradan tekrar login sayfasına gönder.
             if (!ModelState.IsValid)
             {
-                return View(driverModel);
-
+                return View(loginModel);
             }
 
-            var response = await _restService.PostAsync<DriverLoginVM, Result<DriverDto>>(driverModel, "driver/LoginDriver");
-            
-            
+            var response = await _restService.PostAsync<DriverLoginVM, Result<DriverDto>>(loginModel, "driver/DriverLogin");
+
             if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 ModelState.AddModelError("", response.Data.Errors[0]);
-
             }
             else
             {
-                if (response.Data != null)
-                {
-                    HttpContext.Session.SetString("Username", response.Data.Data.Username);
-                    return RedirectToAction("GetDriverMap", "Home", new { Area = "Admin" });
-                }
-                //ViewBag.kullanıcı = driverModel.Username;
+
+                //return RedirectToAction("GetDriverMap", "Home", new { Area = "Admin" }, parametre => çalışan func a parametre yollayabiliriz);
                 return RedirectToAction("GetDriverMap", "Home", new { Area = "Admin" });
-                //return RedirectToAction("Index", "Home", new { Area = "Admin", ViewBag.kullanıcı });
-
-
             }
-            return View(driverModel);
+
+            return View(loginModel);
         }   
 
         //[HttpGet]

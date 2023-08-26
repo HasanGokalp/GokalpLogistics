@@ -37,7 +37,7 @@ namespace GokalpLogistics.Application.Concrete.Services
                 throw new Exception($"{driverRegisterVM.DriverName} isminde bir sürücü eklenmiştir.");
             }
 
-            var driverEntity = Mapper.Map<Driver>(driverRegisterVM);
+            var driverEntity = Mapper.Map<DriverRegisterVM, Driver>(driverRegisterVM);
 
             Db.GetRepository<Driver>().Add(driverEntity);
             await Db.CommitAsync();

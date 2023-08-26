@@ -14,7 +14,18 @@ namespace GokalpLogistics.Application.Concrete.AutoMapper
             CreateMap<DriverRegisterVM, Driver>();
 
             CreateMap<DriverUpdateVM, Driver>();
- 
+
+            CreateMap<DriverLoginVM, Driver>();
+
+            CreateMap<DriverDto, Driver>();
+
+            CreateMap<Driver, DriverRegisterVM>();
+
+            CreateMap<Driver, DriverUpdateVM>();
+
+            CreateMap<Driver,DriverLoginVM >();
+
+
         }
     }
 }
