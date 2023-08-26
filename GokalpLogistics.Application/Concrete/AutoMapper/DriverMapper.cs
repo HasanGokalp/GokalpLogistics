@@ -9,7 +9,9 @@ namespace GokalpLogistics.Application.Concrete.AutoMapper
     {
         public DriverMapper()
         {
-            CreateMap<Driver,DriverDto>();
+            CreateMap<Driver, DriverDto>()
+                .ForMember(x => x.DriverName, y => y.MapFrom(y => y.Name))
+                .ForMember(x => x.DriverSurname, y => y.MapFrom(y => y.Surname));
 
             CreateMap<DriverRegisterVM, Driver>();
 
@@ -17,13 +19,6 @@ namespace GokalpLogistics.Application.Concrete.AutoMapper
 
             CreateMap<DriverLoginVM, Driver>();
 
-            CreateMap<DriverDto, Driver>();
-
-            CreateMap<Driver, DriverRegisterVM>();
-
-            CreateMap<Driver, DriverUpdateVM>();
-
-            CreateMap<Driver,DriverLoginVM >();
 
 
         }

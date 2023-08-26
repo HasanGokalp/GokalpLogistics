@@ -80,7 +80,7 @@ namespace GokalpLogistics.Application.Concrete.Services
 
             var driverEntity = await Db.GetRepository<Driver>().GetById(id);
 
-            var driverDto = Mapper.Map<DriverDto>(driverEntity);
+            var driverDto = Mapper.Map<Driver,DriverDto>(driverEntity);
 
             result.Data = driverDto;
             return result;
